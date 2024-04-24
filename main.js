@@ -14,7 +14,7 @@ window.addEventListener('load', function () {
     }
     header[0].innerHTML = `
     <div class="logo-container">
-        <div>
+        <div class="text-center">
             <a href="../index.html"><img src="../../img/logo.png" alt="logo" width="100px"></a>
             <h1>CASANOHE</h1>
         </div>
@@ -50,7 +50,7 @@ function getSomeDibujos() {
                     <div class="col text-center">
                         <img class="card-img" src="./img/${dibujo.image}.png">
                         <h5 class="card-title">${dibujo.name}</h5>
-                        <p class="card-text">${dibujo.desc}</p>
+                        <p class="card-text">${dibujo.price} €</p>
                     </div>
                 `;
 
