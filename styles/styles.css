@@ -3,6 +3,12 @@ body {
     margin: auto;
 }
 
+h1, h2, h3, h4 {
+    font-family: "Itim", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
 /* * Menu Styles */
 
 .logo-container {
@@ -21,4 +27,11 @@ body {
     height: 50px;
     background-color: #CED93C;
     border: #CED93C;
+}
+
+/** Products index */
+
+.card-img {
+    width: 20vh;
+    height: 20vh;
 }
