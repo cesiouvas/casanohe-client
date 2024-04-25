@@ -13,31 +13,57 @@
     <link href="https://fonts.googleapis.com/css2?family=Itim&family=Poppins:wght@500&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="mb-4">
     <input type="number" name="header" id="header" value="1" hidden>
     <header>
         <!-- cargado por el js -->
     </header>
-    <div class="pt-4 d-flex justify-content-center justify-content-around border-bottom">
+    <hr>
+    <div class="pt-2 d-flex justify-content-center justify-content-around">
         <div>
-            <h3>Dibujos</h3>
+            <h4>Todos los productos</h4>
+        </div>
+    </div>
+    <div class="pt-1 d-flex justify-content-center justify-content-around">
+        <div>
+            <h4>Dibujos</h4>
         </div>
         <div>
-            <h3>Todos los productos</h3>
-        </div>
-        <div>
-            <h3>Punto de gancho</h3>
+            <h4>Croché</h4>
         </div>
     </div>
 
     <div class="p-4">
         <h1 class="text-center">Dibujos</h1>
-        <p class="text-end border-bottom">Ver más ></p>
+        <p class="text-end">Ver más ></p>
+        <hr>
         <div id="shortViewDibujos" class="container p-4">
             <!-- preview de los dibujos -->
         </div>
     </div>
+
+    <div class="p-4">
+        <h1 class="text-center">Croché</h1>
+        <p class="text-end">Ver más ></p>
+        <hr>
+        <div id="shortViewCroche" class="container p-4">
+            <!-- preview de los tejidos -->
+        </div>
+    </div>
+
+    <div class="p-4">
+        <h1 class="text-center">Todos</h1>
+        <p class="text-end">Ver más ></p>
+        <hr>
+        <div id="shortViewAll" class="container p-4">
+            <!-- preview de todos -->
+        </div>
+    </div>
 </body>
+
+<footer class="footer bg-dark text-white text-center py-3 fixed-bottom">
+    casanohe ©
+</footer>
 
 <!--jquery-->
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
