@@ -1,10 +1,11 @@
-let btnLogout = $('#btnLogout')
+let btnLogout = document.getElementById('btnLogout')
+
+// token de sesión
+let tokenusu = sessionStorage.getItem('tokenusu')
+console.log(tokenusu);
 
 //BOTON QUE REALIZA EL CIERRE DE SESION
 btnLogout.addEventListener("click", () => {
-    // elimina el token local
-    sessionStorage.removeItem("tokenusu");
-
     $.ajax({
         type: "GET",
         url: 'http://localhost:8000/api/logout',
@@ -13,8 +14,9 @@ btnLogout.addEventListener("click", () => {
             Authorization: "Bearer " + tokenusu,
         },
         success: function (response) {
-            //console.log(response);
-
+            // elimina el token local
+            sessionStorage.removeItem("tokenusu");
+            // redirección
             window.location.replace("../index.html");
         },
     });

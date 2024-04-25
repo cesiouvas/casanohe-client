@@ -60,3 +60,14 @@ a {
     width: 20vh;
     height: 20vh;
 }
+
+
+/** login view */
+
+.login-container {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+}
