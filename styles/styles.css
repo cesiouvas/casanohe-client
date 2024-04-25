@@ -33,7 +33,7 @@ a {
 /* * Menu Styles */
 
 .nav-menu {
-    padding: 0 5% 0 5%;
+    width: 40%;
 }
 
 .logo-container {
@@ -48,8 +48,8 @@ a {
 }
 
 .menu-buttons {
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     background-color: #CED93C;
     border: #CED93C;
 }
