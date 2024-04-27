@@ -3,7 +3,8 @@
     --orange: #FFB536;
 }
 
-body {
+body, html {
+    height: 100%;
     width: 55%;
     margin: auto;
 }
@@ -61,13 +62,32 @@ a {
     height: 20vh;
 }
 
+/** login & register view */
 
-/** login view */
+.bg-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../img/background.png");
+    background-size: cover;
+    background-position: center;
+    filter: blur(5px);
+}
 
 .login-container {
-    height: 100%;
+    height: 80%;
     margin: 0;
     display: flex;
     justify-content: center; /* Centrar horizontalmente */
     align-items: center; /* Centrar verticalmente */
+    position: relative; /* Asegura que el contenedor de login se coloque por encima del fondo */
+    z-index: 1;
+}
+
+.form-container {
+
+    border: 8px solid #ffcc23; 
+    background-color: #fcf386;
 }
