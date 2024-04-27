@@ -22,10 +22,19 @@ btnRegister.addEventListener('click', (event) => {
             passwd_confirmation: passwd_confirm // send passwd confirmation
         },
         success: function (response) {
-            console.log(response);
+            if ($.trim(response) === '') {
+
+            } else {
+
+                window.location.replace('./login.html'); // ! pasar variable de mensaje para que inicie sesión
+            }
         },
         error: function (xhr, status, error) {
+            // pintar error de datos incorrectos
+
             console.error('Error en la solicitud AJAX:', status, error);
         }
     });
 });
+
+// ! comprobación de los datos email passwd etc..

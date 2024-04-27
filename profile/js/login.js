@@ -36,3 +36,6 @@ bntLogin.addEventListener('click', (event) => {
         }
     });
 });
+
+// ! recoger variable si tiene valor mostrar un mensaje con timeout indicando 
+// ! que se ha creado la cuenta correctamente y que inicie sesión
