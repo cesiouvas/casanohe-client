@@ -98,3 +98,9 @@ a {
     background-color: var(--green);
     border: var(--green);
 }
+
+/*? messages */
+
+.msg-info {
+    font-size: 12px;
+}
