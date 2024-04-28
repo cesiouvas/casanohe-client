@@ -2,6 +2,8 @@ let shortViewDibujos = document.getElementById('shortViewDibujos')
 let shortViewCroche = document.getElementById('shortViewCroche')
 let shortViewAll = document.getElementById('shortViewAll')
 
+let ids = []
+
 window.addEventListener('load', () => {
     getDibujos()
     getCroche()
@@ -96,8 +98,9 @@ function getCroche() {
 
 // todos
 function getAll() {
-    let contRows = 0;
-    let cadAll = ``;
+    let contRows = 0
+    let cadAll = ``
+
     $.ajax({
         type: "GET",
         url: 'http://localhost:8000/api/getAllProducts',
@@ -109,19 +112,20 @@ function getAll() {
             let data = response.data;
 
             data.forEach((allProds, index) => {
+                ids.push(allProds.id)
+
                 // Si es el primer elemento de una fila, abrir una nueva fila
                 if (contRows % 3 === 0) {
-                    cadAll += '<div class="row">';
+                    cadAll += `<div class="row">`
                 }
 
                 // Agregar la columna con el Croche
                 cadAll += `
-                    <div class="col text-center">
+                    <div id="allProd${allProds.id}" class="col text-center">
                         <img class="card-img" src="./img/${allProds.image}.png">
                         <h5 class="card-title">${allProds.name}</h5>
                         <p class="card-text">${allProds.price} €</p>
-                    </div>
-                `;
+                    </div>`
 
                 // Si es el último elemento de una fila, cerrar la fila
                 if ((contRows + 1) % 3 === 0 || index === data.length - 1) {
@@ -129,9 +133,22 @@ function getAll() {
                 }
 
                 // Incrementar el contador de elementos en la fila
-                contRows++;
-            });
-            shortViewAll.innerHTML = cadAll;
-        },
-    });
+                contRows++
+            })
+            shortViewAll.innerHTML = cadAll
+
+            //* función crear eventos
+            events()
+        }, 
+    })
+}
+
+//? asignar eventos a los productos
+function events() {
+    ids.forEach(product => {
+        document.getElementById('allProd' + product).addEventListener('click', () => {
+            window.location.replace('./products/product.html?idProd=' + product)
+        })
+    })
+    ids = []
 }
