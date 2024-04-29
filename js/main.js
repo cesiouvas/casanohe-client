@@ -66,6 +66,7 @@ function printHEader() {
 
 function llenarCarrito() {
     let cad = ``
+    let totalPrice = 0
 
     $.ajax({
         type: "GET",
@@ -77,22 +78,65 @@ function llenarCarrito() {
         success: function (response) {
             let data = response.data;
             console.log(data);
+            cad += `<div>
+                <button id="cerrarCarrito" class="ps-4 btnCarrito"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="#000000" d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6z"/></svg></button>
+                <h2 class="text-center">TU CARRITO</h2>    
+            </div>`
             data.forEach(product => {
-                cad += `<p>${product.name} x ${product.quantity_line} ${product.price}€</p>`
+                totalPrice += product.price
+                cad += `<div class="row justify-content-center pb-4" style="height: 150px">
+                    <div id="img" class="col-4" >
+                        <img class="cartImage" src="${src}img/${product.image}.png" alt="${product.image}">
+                    </div>
+                    <div id="content" class="col-6">
+                        <p>${product.name}</p>
+                        <p>${product.price * product.quantity_line}€</p>
+                        <div class="quantity-selector">
+                            <button id="decrease${product.id}"><i class="fas fa-minus">-</i></button>
+                            <input type="number" id="quantity${product.id}" value="${product.quantity_line}" min="0">
+                            <button id="increase${product.id}"><i class="fas fa-plus">+</i></button>
+                        </div>
+                    </div>
+                </div>`
             });
-           
 
             sidebarCarrito.innerHTML = cad
-        }, 
+
+            // cerrar el carrito
+            $('#cerrarCarrito').on('click', function () {
+                toggleSidebar()
+            })
+
+            createQuantityButtons(data)
+        },
     })
 }
 
 // mostrar y cerrar carrito
 function toggleSidebar() {
     var sidebar = document.getElementById("sidebarCarrito");
-    if (sidebar.style.width === "250px") {
+    if (sidebar.style.width === "23%") {
         sidebar.style.width = "0";
     } else {
-        sidebar.style.width = "250px";
+        sidebar.style.width = "23%";
     }
+}
+
+// crear el botón de selector de cantidad en la vista de producto
+function createQuantityButtons(data) {
+    data.forEach(button => {
+        // sumar cantidad
+        $('#decrease' + button.id).on('click', function () {
+            let currentValue = parseInt($('#quantity' + button.id).val())
+            if (currentValue > 0) { // no posible menor que 0
+                $('#quantity' + button.id).val(currentValue - 1)
+            }
+        })
+
+        // restar cantidad
+        $('#increase' + button.id).on('click', function () {
+            let currentValue = parseInt($('#quantity' + button.id).val())
+            $('#quantity' + button.id).val(currentValue + 1)
+        })
+    })
 }

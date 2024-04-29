@@ -15,20 +15,16 @@ h1,
 h2,
 h3,
 h4 {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Itim';
     font-weight: 400;
     font-style: normal;
 }
 
 hr {
     border: none;
-    /* Elimina el borde predeterminado */
     height: 5px;
-    /* Define la altura de la línea */
     background-color: var(--green);
-    /* Color de la línea */
     margin: 20px 0;
-    /* Espacio alrededor de la línea */
 }
 
 a {
@@ -107,19 +103,25 @@ a {
     border: var(--green);
 }
 
+.btnCarrito {
+    background-color: transparent;
+    border: transparent;
+}
+
 /** quantity selector */
 .quantity-selector {
     display: flex;
     align-items: center;
-    width: 200px;
+    width: 100px;
+    height: 30px;
     margin: 20px auto;
-    border: 1px solid #ccc;
+    border: 1px solid var(--orange);
     border-radius: 5px;
     overflow: hidden;
 }
 
 .quantity-selector input {
-    width: 100%;
+    width: 50%;
     padding: 10px;
     border: none;
     text-align: center;
@@ -136,14 +138,14 @@ a {
 }
 
 .quantity-selector button {
-    background-color: #f0f0f0;
+    background-color: var(--yellow);
     border: none;
     cursor: pointer;
     padding: 10px;
 }
 
 .quantity-selector button:hover {
-    background-color: #e0e0e0;
+    background-color: var(--orange);
 }
 
 /*? messages */
@@ -152,7 +154,7 @@ a {
     font-size: 12px;
 }
 
-/* Sidebar Styles */
+/* * Sidebar Styles */
 .sidebar {
     height: 100%;
     width: 0;
@@ -201,4 +203,15 @@ a {
 
 .openbtn:hover {
     background-color: #444;
+}
+
+.item-info {
+    clear: both;
+    display: inline-block;
+    width: calc(100% - 32px - 80px);
+}
+
+.cartImage {
+    width: 100px;
+    height: 100px;
 }
