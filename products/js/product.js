@@ -41,6 +41,7 @@ function getProductDetails() {
     })
 }
 
+// crear el botón de selector de cantidad en la vista de producto
 function createQuantityButton() {
     const decreaseBtn = document.getElementById('decrease');
     const increaseBtn = document.getElementById('increase');
@@ -48,7 +49,7 @@ function createQuantityButton() {
 
     decreaseBtn.addEventListener('click', function () {
         let currentValue = parseInt(quantityInput.value);
-        if (currentValue > 0) {
+        if (currentValue > 0) { // no posible menor que 0
             quantityInput.value = currentValue - 1;
         }
     });
@@ -57,16 +58,12 @@ function createQuantityButton() {
         let currentValue = parseInt(quantityInput.value);
         quantityInput.value = currentValue + 1;
     });
-
 }
 
 // añadir product a la cesta
 function addProduct() {
     $('#addProduct').on('click', function () {
-        console.log(tokenusu);
         let quantity = $('#quantity').val()
-        console.log(quantity);
-        console.log(product_id);
 
         $.ajax({
             type: "POST",

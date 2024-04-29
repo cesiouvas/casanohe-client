@@ -1,11 +1,12 @@
 :root {
-    --yellow: #FBCD26 ;
+    --yellow: #FBCD26;
     --orange: #FFB536;
     --green: #CED93C;
     --bg-white: #fffff8;
 }
 
-body, html {
+body,
+html {
     height: 100%;
     margin: auto 10% auto 10%;
 }
@@ -20,10 +21,14 @@ h4 {
 }
 
 hr {
-    border: none; /* Elimina el borde predeterminado */
-    height: 5px; /* Define la altura de la línea */
-    background-color: var(--green); /* Color de la línea */
-    margin: 20px 0; /* Espacio alrededor de la línea */
+    border: none;
+    /* Elimina el borde predeterminado */
+    height: 5px;
+    /* Define la altura de la línea */
+    background-color: var(--green);
+    /* Color de la línea */
+    margin: 20px 0;
+    /* Espacio alrededor de la línea */
 }
 
 a {
@@ -81,14 +86,17 @@ a {
     height: 100%;
     margin: 0;
     display: flex;
-    justify-content: center; /* Centrar horizontalmente */
-    align-items: center; /* Centrar verticalmente */
-    position: relative; /* Asegura que el contenedor de login se coloque por encima del fondo */
+    justify-content: center;
+    /* Centrar horizontalmente */
+    align-items: center;
+    /* Centrar verticalmente */
+    position: relative;
+    /* Asegura que el contenedor de login se coloque por encima del fondo */
     z-index: 1;
 }
 
 .form-container {
-    border: 8px solid var(--green); 
+    border: 8px solid var(--green);
     background-color: var(--bg-white);
 }
 
@@ -108,9 +116,9 @@ a {
     border: 1px solid #ccc;
     border-radius: 5px;
     overflow: hidden;
-  }
+}
 
-  .quantity-selector input {
+.quantity-selector input {
     width: 100%;
     padding: 10px;
     border: none;
@@ -118,28 +126,79 @@ a {
     font-size: 16px;
     -moz-appearance: textfield;
     appearance: textfield;
-  }
+}
 
-  /*? ocultar flechas de suma y resta de cantidades */
-  .quantity-selector input::-webkit-inner-spin-button,
-  .quantity-selector input::-webkit-outer-spin-button {
+/*? ocultar flechas de suma y resta de cantidades */
+.quantity-selector input::-webkit-inner-spin-button,
+.quantity-selector input::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
-  }
+}
 
-  .quantity-selector button {
+.quantity-selector button {
     background-color: #f0f0f0;
     border: none;
     cursor: pointer;
     padding: 10px;
-  }
+}
 
-  .quantity-selector button:hover {
+.quantity-selector button:hover {
     background-color: #e0e0e0;
-  }
+}
 
 /*? messages */
 
 .msg-info {
     font-size: 12px;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #ecffd7;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* Sidebar Button */
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+
+.openbtn:hover {
+    background-color: #444;
 }
