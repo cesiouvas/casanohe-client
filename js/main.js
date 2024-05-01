@@ -67,6 +67,9 @@ function printHEader() {
 function llenarCarrito() {
     let cad = ``
     let totalPrice = 0
+    let quantityLines = []
+    let cartIds = []
+    sidebarCarrito.innerHTML = ""
 
     $.ajax({
         type: "GET",
@@ -77,12 +80,14 @@ function llenarCarrito() {
         },
         success: function (response) {
             let data = response.data;
-            console.log(data);
             cad += `<div>
                 <button id="cerrarCarrito" class="ps-4 btnCarrito"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="#000000" d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6z"/></svg></button>
                 <h2 class="text-center">TU CARRITO</h2>    
             </div>`
             data.forEach(product => {
+                quantityLines.push(product.line_quantity)
+                cartIds.push(product.id)
+
                 totalPrice += product.price
                 cad += `<div class="row justify-content-center pb-4" style="height: 150px">
                     <div id="img" class="col-4" >
@@ -90,10 +95,10 @@ function llenarCarrito() {
                     </div>
                     <div id="content" class="col-6">
                         <p>${product.name}</p>
-                        <p>${product.price * product.quantity_line}€</p>
+                        <p>${product.price * product.line_quantity}€</p>
                         <div class="quantity-selector">
                             <button id="decrease${product.id}"><i class="fas fa-minus">-</i></button>
-                            <input type="number" id="quantity${product.id}" value="${product.quantity_line}" min="0">
+                            <input type="number" id="quantity${product.id}" value="${product.line_quantity}" min="0">
                             <button id="increase${product.id}"><i class="fas fa-plus">+</i></button>
                         </div>
                     </div>
@@ -105,6 +110,7 @@ function llenarCarrito() {
             // cerrar el carrito
             $('#cerrarCarrito').on('click', function () {
                 toggleSidebar()
+                actualizarCarrito(quantityLines, cartIds)
             })
 
             createQuantityButtons(data)
@@ -138,5 +144,26 @@ function createQuantityButtons(data) {
             let currentValue = parseInt($('#quantity' + button.id).val())
             $('#quantity' + button.id).val(currentValue + 1)
         })
+    })
+}
+
+function actualizarCarrito(quantityLines, cartIds) {
+    console.log(quantityLines);
+    console.log(cartIds);
+
+    $.ajax({
+        type: "PUT",
+        url: 'http://localhost:8000/api/actualizarCarrito',
+        dataType: "json",
+        headers: {
+            Authorization: 'Bearer ' + tokenusu
+        },
+        data: {
+            quantityLines: quantityLines,
+            cartIds: cartIds,
+        },
+        success: function (response) {
+            llenarCarrito()
+        },
     })
 }
