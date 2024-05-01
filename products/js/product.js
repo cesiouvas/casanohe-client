@@ -1,3 +1,5 @@
+import { llenarCarrito } from '../../js/main.js'
+
 let paramURL = new URLSearchParams(window.location.search)
 let product_id = paramURL.get('idProd')
 
@@ -77,7 +79,8 @@ function addProduct() {
                 product_id: product_id
             },
             success: function (response) {
-               console.log("ano");
+                // recargar carrito
+                llenarCarrito()
             },
         })
     })
