@@ -67,7 +67,6 @@ function printHEader() {
 export function llenarCarrito() {
     let cad = ``
     let totalPrice = 0
-    let quantityLines = 0
     let cartIds = []
     sidebarCarrito.innerHTML = ""
 
@@ -85,9 +84,9 @@ export function llenarCarrito() {
                 <h2 class="text-center">TU CARRITO</h2>    
             </div>`
             data.forEach(product => {
-                quantityLines++
-                cartIds.push(product.id)
-
+                // id de linea del carrito
+                cartIds.push(product.scid)
+                
                 totalPrice += product.price
                 cad += `<div class="row justify-content-center pb-4" style="height: 150px">
                     <div id="img" class="col-4" >
@@ -97,9 +96,9 @@ export function llenarCarrito() {
                         <p>${product.name}</p>
                         <p>${product.price * product.line_quantity}€</p>
                         <div class="quantity-selector">
-                            <button id="decrease${product.id}"><i class="fas fa-minus">-</i></button>
-                            <input type="number" id="quantity${product.id}" value="${product.line_quantity}" min="0">
-                            <button id="increase${product.id}"><i class="fas fa-plus">+</i></button>
+                            <button id="decrease${product.scid}"><i class="fas fa-minus">-</i></button>
+                            <input type="number" id="quantity${product.scid}" value="${product.line_quantity}" min="0">
+                            <button id="increase${product.scid}"><i class="fas fa-plus">+</i></button>
                         </div>
                     </div>
                 </div>`
@@ -110,7 +109,7 @@ export function llenarCarrito() {
             // cerrar el carrito
             $('#cerrarCarrito').on('click', function () {
                 toggleSidebar()
-                actualizarCarrito(quantityLines, cartIds)
+                actualizarCarrito(cartIds)
             })
 
             createQuantityButtons(data)
@@ -132,27 +131,31 @@ function toggleSidebar() {
 function createQuantityButtons(data) {
     data.forEach(button => {
         // sumar cantidad
-        $('#decrease' + button.id).on('click', function () {
-            let currentValue = parseInt($('#quantity' + button.id).val())
+        $('#decrease' + button.scid).on('click', function () {
+            let currentValue = parseInt($('#quantity' + button.scid).val())
             if (currentValue > 0) { // no posible menor que 0
-                $('#quantity' + button.id).val(currentValue - 1)
+                $('#quantity' + button.scid).val(currentValue - 1)
             }
         })
 
         // restar cantidad
-        $('#increase' + button.id).on('click', function () {
-            let currentValue = parseInt($('#quantity' + button.id).val())
-            $('#quantity' + button.id).val(currentValue + 1)
+        $('#increase' + button.scid).on('click', function () {
+            let currentValue = parseInt($('#quantity' + button.scid).val())
+            $('#quantity' + button.scid).val(currentValue + 1)
         })
     })
 }
 
-function actualizarCarrito(quantityLines, cartIds) {
+function actualizarCarrito(cartIds) {
     let quantities = []
 
-    for (let i = 0; i < quantityLines; i++) {
+    // almacenar las cantidades de cada línea
+    for (let i = 0; i < cartIds.length; i++) {
+        console.log(cartIds);
         quantities.push(parseInt($('#quantity' + cartIds[i]).val()))
     }
+    console.log(quantities);
+    console.log(cartIds);
 
     $.ajax({
         type: "PUT",
