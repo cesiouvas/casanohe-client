@@ -21,16 +21,29 @@ window.addEventListener('load', function () {
 
     if (tokenusu == null) {
         document.getElementById('profile').href = src + srcLog[0]
+        sidebarCarrito.innerHTML = `
+        <div>
+            <button id="cerrarCarrito" class="ps-4 btnCarrito"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="#000000" d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6z"/></svg></button>
+            <h2 class="text-center">TU CARRITO</h2>    
+        </div>
+        <div class="text-center">
+            <h2>Tu carrito está vacío</h2>
+            <h3>Inicia sesión para poder añadir productos al carrito</h3>
+        </div>`
     } else {
         document.getElementById('profile').href = src + srcLog[1]
+        llenarCarrito()
     }
-
+    
     // abrir y cerrar carrito
     $('#openCart').on('click', function () {
         toggleSidebar()
     })
 
-    llenarCarrito()
+    // cerrar el carrito
+    $('#cerrarCarrito').on('click', function () {
+        toggleSidebar()
+    })
 })
 
 function printHEader() {
@@ -78,15 +91,17 @@ export function llenarCarrito() {
             Authorization: 'Bearer ' + tokenusu
         },
         success: function (response) {
+
             let data = response.data;
             cad += `<div>
-                <button id="cerrarCarrito" class="ps-4 btnCarrito"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="#000000" d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6z"/></svg></button>
-                <h2 class="text-center">TU CARRITO</h2>    
-            </div>`
+                    <button id="cerrarCarrito" class="ps-4 btnCarrito"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="#000000" d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6z"/></svg></button>
+                    <h2 class="text-center">TU CARRITO</h2>    
+                </div>`
+
             data.forEach(product => {
                 // id de linea del carrito
                 cartIds.push(product.scid)
-                
+
                 totalPrice += product.price
                 cad += `<div class="row justify-content-center pb-4" style="height: 150px">
                     <div id="img" class="col-4" >
@@ -151,11 +166,8 @@ function actualizarCarrito(cartIds) {
 
     // almacenar las cantidades de cada línea
     for (let i = 0; i < cartIds.length; i++) {
-        console.log(cartIds);
         quantities.push(parseInt($('#quantity' + cartIds[i]).val()))
     }
-    console.log(quantities);
-    console.log(cartIds);
 
     $.ajax({
         type: "PUT",

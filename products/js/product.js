@@ -38,27 +38,35 @@ function getProductDetails() {
 
             createQuantityButton()
 
-            addProduct();
+            if (!tokenusu) {
+                // cambio texto del botón y funcionalidad
+                $('#addProduct').text('Iniciar sesión')
+                $('#addProduct').on('click', function() {
+                    window.location.replace('../profile/login.html')
+                })
+            } else {
+                addProduct()
+            }
         },
     })
 }
 
 // crear el botón de selector de cantidad en la vista de producto
 function createQuantityButton() {
-    const decreaseBtn = document.getElementById('decrease');
-    const increaseBtn = document.getElementById('increase');
-    const quantityInput = document.getElementById('quantity');
+    const decreaseBtn = document.getElementById('decrease')
+    const increaseBtn = document.getElementById('increase')
+    const quantityInput = document.getElementById('quantity')
 
     decreaseBtn.addEventListener('click', function () {
-        let currentValue = parseInt(quantityInput.value);
+        let currentValue = parseInt(quantityInput.value)
         if (currentValue > 0) { // no posible menor que 0
-            quantityInput.value = currentValue - 1;
+            quantityInput.value = currentValue - 1
         }
     });
 
     increaseBtn.addEventListener('click', function () {
-        let currentValue = parseInt(quantityInput.value);
-        quantityInput.value = currentValue + 1;
+        let currentValue = parseInt(quantityInput.value)
+        quantityInput.value = currentValue + 1
     });
 }
 
