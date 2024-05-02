@@ -93,7 +93,7 @@ export function llenarCarrito() {
         success: function (response) {
 
             let data = response.data;
-            cad += `<div>
+            cad += `<div class="pb-3">
                     <button id="cerrarCarrito" class="ps-4 btnCarrito"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="#000000" d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6z"/></svg></button>
                     <h2 class="text-center">TU CARRITO</h2>    
                 </div>`
@@ -107,7 +107,7 @@ export function llenarCarrito() {
                     <div id="img" class="col-4" >
                         <img class="cartImage" src="${src}img/${product.image}.png" alt="${product.image}">
                     </div>
-                    <div id="content" class="col-6">
+                    <div id="content" class="col-5">
                         <p>${product.name}</p>
                         <p>${product.price * product.line_quantity}€</p>
                         <div class="quantity-selector">
@@ -115,6 +115,11 @@ export function llenarCarrito() {
                             <input type="number" id="quantity${product.scid}" value="${product.line_quantity}" min="0">
                             <button id="increase${product.scid}"><i class="fas fa-plus">+</i></button>
                         </div>
+                    </div>
+                    <div class="col-1">
+                        <button class="btnCarrito" id="deleteLine${product.scid}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="#000000" d="m9.4 16.5l2.6-2.6l2.6 2.6l1.4-1.4l-2.6-2.6L16 9.9l-1.4-1.4l-2.6 2.6l-2.6-2.6L8 9.9l2.6 2.6L8 15.1zM7 21q-.825 0-1.412-.587T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413T17 21z"/></svg>
+                        </button>
                     </div>
                 </div>`
             });
@@ -127,7 +132,11 @@ export function llenarCarrito() {
                 actualizarCarrito(cartIds)
             })
 
+            // selectores de cantidad
             createQuantityButtons(data)
+
+            // eliminar línea del carrito
+            deleteCartLine(cartIds);
         },
     })
 }
@@ -181,8 +190,32 @@ function actualizarCarrito(cartIds) {
             cartIds: cartIds,
         },
         success: function (response) {
-            // recarga el carrito
+            // actualizar el carrito
             llenarCarrito()
         },
     })
+}
+
+function deleteCartLine(cartIds) {
+    cartIds.forEach(cartLine => {
+        // asignarle el evento a cada botón
+        $('#deleteLine' + cartLine).on('click', function () {
+            // ajax para eliminar la línea
+            $.ajax({
+                type: "DELETE",
+                url: 'http://localhost:8000/api/deleteCartLine',
+                dataType: "json",
+                headers: {
+                    Authorization: 'Bearer ' + tokenusu
+                },
+                data: {
+                    line: cartLine
+                },
+                success: function (response) {
+                    // actualizar carrito
+                    llenarCarrito()
+                },
+            })
+        })
+    });
 }
