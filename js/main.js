@@ -5,7 +5,7 @@ let sidebarCarrito = document.getElementById('sidebarCarrito')
 
 // token de sesión
 let tokenusu = sessionStorage.getItem('tokenusu')
-console.log(tokenusu);
+console.log(tokenusu)
 
 let srcLog = [
     'profile/login.html',
@@ -79,7 +79,7 @@ function printHEader() {
 
 export function llenarCarrito() {
     let cad = ``
-    let totalPrice = 0
+    let totalPrice = 0.00
     let cartIds = []
     sidebarCarrito.innerHTML = ""
 
@@ -102,7 +102,8 @@ export function llenarCarrito() {
                 // id de linea del carrito
                 cartIds.push(product.scid)
 
-                totalPrice += product.price
+                // sumar al coste total el coste de cada línea parseando a float
+                totalPrice += parseFloat(product.line_price)
                 cad += `<div class="row justify-content-center pb-4" style="height: 150px">
                     <div id="img" class="col-4" >
                         <img class="cartImage" src="${src}img/${product.image}.png" alt="${product.image}">
@@ -124,6 +125,15 @@ export function llenarCarrito() {
                 </div>`
             });
 
+            cad += `<footer class="">
+                        <div class="d-flex justify-content-end align-items-center pe-4 p-3">
+                            <h4>Precio total: ${totalPrice} €</h4>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center p-3">
+                            <button class="btn btn-secondary" id="verCarrito">Ver carrito</button>
+                        </div>
+                    </footer>`
+
             sidebarCarrito.innerHTML = cad
 
             // cerrar el carrito
@@ -136,7 +146,11 @@ export function llenarCarrito() {
             createQuantityButtons(data)
 
             // eliminar línea del carrito
-            deleteCartLine(cartIds);
+            deleteCartLine(cartIds)
+
+            $('#verCarrito').on('click', function () {
+                window.location.replace('../cart/cart.html')
+            })
         },
     })
 }
@@ -170,6 +184,7 @@ function createQuantityButtons(data) {
     })
 }
 
+// actualizar lineas de carrito
 function actualizarCarrito(cartIds) {
     let quantities = []
 
@@ -196,26 +211,30 @@ function actualizarCarrito(cartIds) {
     })
 }
 
+// eliminar linea del carrito
 function deleteCartLine(cartIds) {
     cartIds.forEach(cartLine => {
         // asignarle el evento a cada botón
         $('#deleteLine' + cartLine).on('click', function () {
-            // ajax para eliminar la línea
-            $.ajax({
-                type: "DELETE",
-                url: 'http://localhost:8000/api/deleteCartLine',
-                dataType: "json",
-                headers: {
-                    Authorization: 'Bearer ' + tokenusu
-                },
-                data: {
-                    line: cartLine
-                },
-                success: function (response) {
-                    // actualizar carrito
-                    llenarCarrito()
-                },
-            })
+            // si se confirma se elimina
+            if (confirm('De verdad quieres eliminar estos productos?')) {
+                // ajax para eliminar la línea
+                $.ajax({
+                    type: "DELETE",
+                    url: 'http://localhost:8000/api/deleteCartLine',
+                    dataType: "json",
+                    headers: {
+                        Authorization: 'Bearer ' + tokenusu
+                    },
+                    data: {
+                        line: cartLine
+                    },
+                    success: function (response) {
+                        // actualizar carrito
+                        llenarCarrito()
+                    },
+                })
+            }
         })
     });
 }

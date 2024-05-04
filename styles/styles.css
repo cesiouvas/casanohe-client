@@ -101,7 +101,29 @@ a {
 .btn-primary {
     background-color: var(--green);
     border: var(--green);
+    color: black;
+    font-weight: 500;
 }
+
+.btn-primary:hover {
+    color: black;
+    background-color: var(--yellow);
+    border: var(--orange);
+}
+
+.btn-secondary {
+    background-color: var(--yellow);
+    border: var(--orange);
+    color: black;
+    font-weight: 500;
+}
+
+.btn-secondary:hover {
+    background-color: var(--green);
+    border: var(--green);
+    color: black;
+}
+
 
 .btnCarrito {
     background-color: transparent;
