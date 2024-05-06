@@ -1,16 +1,16 @@
 let contentCarrito = document.getElementById('contentCarrito')
 let totalPrices = document.getElementById('totalPrices')
 
+let tokenusu = sessionStorage.getItem('tokenusu')
+
 let cad = ``
 let totalPrice = 0
 
 export function carritoPerfil(carrito) {
     carrito.forEach(product => {
-        // id de linea del carrito
-        //cartIds.push(product.scid)
-
         // sumar al coste total el coste de cada línea parseando a float
         totalPrice += parseFloat(product.line_price)
+
         cad += `<div class="row justify-content-center pb-4" style="height: 150px">
             <div id="img" class="col-3" >
                 <img class="cartImage" src="../img/${product.image}.png" alt="${product.image}">
