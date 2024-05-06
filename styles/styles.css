@@ -100,7 +100,7 @@ a {
 
 .btn-primary {
     background-color: var(--green);
-    border: var(--green);
+    border-color: var(--green);
     color: black;
     font-weight: 500;
 }
@@ -108,7 +108,13 @@ a {
 .btn-primary:hover {
     color: black;
     background-color: var(--yellow);
-    border: var(--orange);
+    border-color: var(--orange);
+}
+
+.btn-primary:active {
+    color: black;
+    background-color: red;
+    border-color: red;
 }
 
 .btn-secondary {

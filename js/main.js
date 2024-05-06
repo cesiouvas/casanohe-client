@@ -1,3 +1,5 @@
+import { carritoPerfil } from '../cart/js/cart.js'
+
 let header = document.getElementsByTagName('header')
 let createHeader = document.getElementById('header')
 
@@ -92,7 +94,13 @@ export function llenarCarrito() {
         },
         success: function (response) {
 
-            let data = response.data;
+            let data = response.data
+
+            // llenar el perfil con carrito
+            if ($('#pag').val() == 1) {
+                carritoPerfil(data)
+            }
+
             cad += `<div class="pb-3">
                     <button id="cerrarCarrito" class="ps-4 btnCarrito"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="#000000" d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6z"/></svg></button>
                     <h2 class="text-center">TU CARRITO</h2>    

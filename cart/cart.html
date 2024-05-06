@@ -7,25 +7,66 @@
     <title>Casanohe</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../styles/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Itim&family=Poppins:wght@500&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="../styles/styles.css">
 </head>
 
 <body>
+    <input type="hidden" name="pag" id="pag" value="1">
     <header>
         <!-- rellenar con main.js -->
     </header>
 
     <!-- sidebar -->
     <div id="sidebarCarrito" class="sidebar">
-        
+
     </div>
 
-    <div>
-        <p>MENSAJE EXPLICAICON</p>
+    <div class="d-flex justify-content-center">
+        <div>
+            <div class="d-flex justify-content-center">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut fuga est veniam totam, itaque
+                    consequatur, non amet dolores natus temporibus illo neque quos quibusdam, et in! Quod cumque porro
+                    consectetur.</p>
+            </div>
+            <div class="d-flex justify-content-center">
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam repudiandae earum provident sint amet
+                    quis iste. Rerum tenetur fuga nemo provident minima suscipit similique earum harum nulla.
+                    Voluptatum, iusto dignissimos.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="carritoEnPerfil" class="row justify-content-center p-4">
+        <div class="col-7">
+            <div class="d-flex justify-content-between">
+                <h3 class="mr-auto">MI CARRITO</h3>
+                <h4 class="ml-auto"><a href="../index.html">Seguir comprando ></a></h4>
+            </div>
+           <div id="contentCarrito" class="pt-4">
+                <!-- contenido del carrito -->
+           </div>
+        </div>
+        <div class="col-1">
+            
+        </div>
+        <div class="col-4">
+            <div class="d-flex justify-content-between">
+                <h3 class="mr-auto">RESUMEN DEL PEDIDO</h3>
+            </div>
+            <div id="totalPrices" class="pt-4">
+                <!-- Precios totaes y envíos -->
+            </div>
+            <div class="pt-4">
+                <button class="btn btn-primary rounded-pill w-100">Hacer pedido</button>
+                <p class=" text-center pt-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="#FFB536" d="M6 22q-.825 0-1.412-.587T4 20V10q0-.825.588-1.412T6 8h1V6q0-2.075 1.463-3.537T12 1t3.538 1.463T17 6v2h1q.825 0 1.413.588T20 10v10q0 .825-.587 1.413T18 22zm6-5q.825 0 1.413-.587T14 15t-.587-1.412T12 13t-1.412.588T10 15t.588 1.413T12 17M9 8h6V6q0-1.25-.875-2.125T12 3t-2.125.875T9 6z"/></svg>
+                    Pago seguro
+                </p>
+            </div>
+        </div>
     </div>
 </body>
 
