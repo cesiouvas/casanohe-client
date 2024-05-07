@@ -18,7 +18,7 @@
         <!-- rellenar con main.js -->
     </header>
 
-    
+
     <hr>
     <div class="d-flex justify-content-evenly pb-4">
         <p class="nav-menu text-center link-offset-1">
@@ -76,7 +76,7 @@
             <div class="pt-4">
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary w-100 rounded-pill" data-bs-toggle="modal"
-                    data-bs-target="#confirmPedido">
+                    data-bs-target="#modalConfirmPedido">
                     Hacer pedido
                 </button>
                 <p class=" text-center pt-4">
@@ -90,20 +90,28 @@
         </div>
     </div>
 
-
-   
-
-    <div class="modal fade" id="confirmPedido" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+    <!-- modal de confirmación de pedido -->
+    <div class="modal fade" id="modalConfirmPedido" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">¿Estás segur@ de que quieres hacer el pedido?
+                    <h1 class="modal-title fs-5">¿Estás segur@ de que quieres hacer el pedido?
                     </h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                <div id="errorPedido" class="modal-body" hidden>
+                    <p class="error-msg rounded p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" class="pb-1">
+                            <path fill="#000000"
+                                d="M1 21L12 2l11 19zm11-3q.425 0 .713-.288T13 17t-.288-.712T12 16t-.712.288T11 17t.288.713T12 18m-1-3h2v-5h-2z" />
+                        </svg>
+                        No tiene dirección o DNI establecidos.
+                    </p>
+                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Todavía no</button>
-                    <button type="button" class="btn btn-primary">¡Claro!</button>
+                    <button id="confirmarPedido" type="button" class="btn btn-primary">¡Claro!</button>
                 </div>
             </div>
         </div>

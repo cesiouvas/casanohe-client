@@ -9,9 +9,24 @@ let totalPrice = 0
 let userData
 
 window.addEventListener('load', function () {
+    // obtener datos de usuario
     getUserData()
+
+    $('#confirmarPedido').on('click', function() {
+        // no está definido dni o dirección
+        if (!userData.dni || !userData.address || !userData.city|| !userData.country) {
+            $("#errorPedido").removeAttr("hidden");
+            setTimeout(() => {
+                $("#errorPedido").attr("hidden", true);
+            }, 5000);
+        } else {
+            // 
+            completarPedido()
+        }
+    })
 })
 
+// datos de usuario
 function getUserData() {
     $.ajax({
         type: "GET",
@@ -71,6 +86,7 @@ export function carritoPerfil(carrito) {
     createQuantityButtons(carrito)
 }
 
+// crear los botones de cantidad con sus funcionalidades
 function createQuantityButtons(data) {
     data.forEach(button => {
         // sumar cantidad

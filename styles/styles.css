@@ -201,6 +201,11 @@ a {
     border-radius: 20px;
 }
 
+.error-msg {
+    background-color: rgb(255, 105, 46);
+    border-radius: 20px;
+}
+
 /* * Sidebar Styles */
 .sidebar {
     height: 100%;
