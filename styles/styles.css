@@ -41,6 +41,8 @@ a {
 .aligned-menu {
     position: relative;
     margin-top: -42px;
+    margin-left: 80%;
+    width: 20%;
 }
 
 /* * Menu Styles */

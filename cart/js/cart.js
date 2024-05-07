@@ -6,6 +6,26 @@ let tokenusu = sessionStorage.getItem('tokenusu')
 let cad = ``
 let totalPrice = 0
 
+let userData
+
+window.addEventListener('load', function () {
+    getUserData()
+})
+
+function getUserData() {
+    $.ajax({
+        type: "GET",
+        url: 'http://localhost:8000/api/getUserData',
+        dataType: "json",
+        headers: {
+            Authorization: 'Bearer ' + tokenusu
+        },
+        success: function (response) {
+            userData = response.data
+        },
+    })
+}
+
 export function carritoPerfil(carrito) {
     carrito.forEach(product => {
         // sumar al coste total el coste de cada línea parseando a float
