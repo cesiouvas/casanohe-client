@@ -12,16 +12,16 @@ window.addEventListener('load', function () {
     // obtener datos de usuario
     getUserData()
 
-    $('#confirmarPedido').on('click', function() {
+    $('#confirmarPedido').on('click', function () {
         // no está definido dni o dirección
-        if (!userData.dni || !userData.address || !userData.city|| !userData.country) {
+        if (!userData.dni || !userData.address || !userData.city || !userData.country) {
             $("#errorPedido").removeAttr("hidden");
             setTimeout(() => {
                 $("#errorPedido").attr("hidden", true);
             }, 5000);
         } else {
-            // 
-            completarPedido()
+            // completar pedido
+            procesarPedido()
         }
     })
 })
@@ -105,26 +105,24 @@ function createQuantityButtons(data) {
     })
 }
 
-/*
+
 function procesarPedido() {
-    $('#hacerPedido').on('click', function () {
-        $.ajax({
-            type: "POST",
-            url: 'http://localhost:8000/api/crearPedido',
-            dataType: "json",
-            headers: {
-                Authorization: 'Bearer ' + tokenusu
-            },
-            data: {
-                totalPrice: totalPrice
-            },
-            success: function (response) {
-                console.log("ojeteeee");
-            },
-            error: function (xhr, status, error) {
-                console.error("Error al hacer el pedido:", error);
-            }
-        })
+    console.log(totalPrice);
+    $.ajax({
+        type: "POST",
+        url: 'http://localhost:8000/api/crearPedido',
+        dataType: "json",
+        headers: {
+            Authorization: 'Bearer ' + tokenusu
+        },
+        data: {
+            totalPrice: totalPrice
+        },
+        success: function (response) {
+            console.log("ojeteeee");
+        },
+        error: function (xhr, status, error) {
+            console.error("Error al hacer el pedido:", error);
+        }
     })
 }
-*/
