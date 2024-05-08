@@ -1,3 +1,5 @@
+import { llenarCarrito } from '../../js/main.js'
+
 let contentCarrito = document.getElementById('contentCarrito')
 let totalPrices = document.getElementById('totalPrices')
 
@@ -42,6 +44,8 @@ function getUserData() {
 }
 
 export function carritoPerfil(carrito) {
+    totalPrice = 0
+    
     // si el carrito está vacío
     if (carrito.length == 0) {
         contentCarrito.innerHTML = `<h1>El carrito está vacío</h1>
@@ -50,7 +54,7 @@ export function carritoPerfil(carrito) {
         carrito.forEach(product => {
             // sumar al coste total el coste de cada línea parseando a float
             totalPrice += parseFloat(product.line_price)
-    
+
             cad += `<div class="row justify-content-center pb-4" style="height: 150px">
                 <div id="img" class="col-3" >
                     <img class="cartImage" src="../img/${product.image}.png" alt="${product.image}">
@@ -87,9 +91,9 @@ export function carritoPerfil(carrito) {
             <p class="ml-auto">Gratis</p>
         </div>`
 
-totalPrices.innerHTML = cad
+    totalPrices.innerHTML = cad
 
-createQuantityButtons(carrito)
+    createQuantityButtons(carrito)
 }
 
 // crear los botones de cantidad con sus funcionalidades
@@ -111,7 +115,6 @@ function createQuantityButtons(data) {
     })
 }
 
-
 function procesarPedido() {
     console.log(totalPrice);
     $.ajax({
@@ -125,7 +128,13 @@ function procesarPedido() {
             totalPrice: totalPrice
         },
         success: function (response) {
-            console.log("ojeteeee");
+            // cerrar modal
+            $(function () {
+                $('#modalConfirmPedido').modal('toggle');
+            });
+
+            // recargar carrito
+            llenarCarrito()
         },
         error: function (xhr, status, error) {
             console.error("Error al hacer el pedido:", error);
