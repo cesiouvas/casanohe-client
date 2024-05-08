@@ -2,7 +2,6 @@ let btnLogout = document.getElementById('btnLogout')
 
 // token de sesión
 let tokenusu = sessionStorage.getItem('tokenusu')
-console.log(tokenusu);
 
 //BOTON QUE REALIZA EL CIERRE DE SESION
 btnLogout.addEventListener("click", () => {
