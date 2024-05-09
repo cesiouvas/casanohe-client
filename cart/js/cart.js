@@ -116,7 +116,6 @@ function createQuantityButtons(data) {
 }
 
 function procesarPedido() {
-    console.log(totalPrice);
     $.ajax({
         type: "POST",
         url: 'http://localhost:8000/api/crearPedido',

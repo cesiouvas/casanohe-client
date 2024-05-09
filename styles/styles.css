@@ -11,12 +11,28 @@ html {
     margin: auto 10% auto 10%;
 }
 
-h1,
+body {
+    opacity: 0; /* Establece la opacidad inicial en 0 para ocultar el contenido */
+    transition: opacity 1s ease; /* Transición suave de la opacidad */
+}
+
+h1 {
+    font-family: "Itim", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
 h2,
 h3,
 h4 {
-    font-family: 'Itim';
+    font-family: sans-serif;
     font-weight: 400;
+    font-style: normal;
+}
+
+p {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
     font-style: normal;
 }
 
