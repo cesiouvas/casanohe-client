@@ -16,6 +16,7 @@ let srcLog = [
 
 let src
 
+// fadein
 function fadeIn(element, duration) {
     var start = performance.now();
     requestAnimationFrame(function fadeInStep(timestamp) {
@@ -28,6 +29,7 @@ function fadeIn(element, duration) {
 }
 // crear header
 window.addEventListener('load', function () {
+    // fadein
     document.body.style.opacity = 0;
     fadeIn(document.body, 100);
 
