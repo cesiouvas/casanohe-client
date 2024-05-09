@@ -44,6 +44,7 @@ function getUserData() {
 }
 
 export function carritoPerfil(carrito) {
+    cad = ``
     totalPrice = 0
     
     // si el carrito está vacío
