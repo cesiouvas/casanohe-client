@@ -164,7 +164,6 @@ a {
     border: transparent;
 }
 
-
 /** quantity selector */
 .quantity-selector {
     display: flex;
@@ -222,6 +221,10 @@ a {
     border-radius: 20px;
 }
 
+.txt-info {
+    color: var(--green);
+    font-weight: bold;
+} 
 /* * Sidebar Styles */
 .sidebar {
     height: 100%;
@@ -282,4 +285,17 @@ a {
 .cartImage {
     width: 100px;
     height: 100px;
+}
+
+/*? inputs */
+
+.profile-inp {
+    border: var(--yellow) 3px solid;
+    background-color: #feffe4;
+}
+
+.profile-inp:focus {
+    border: var(--green) 3px solid;
+    box-shadow: 0 0 0 0.2rem var(--green);
+    background-color: #feffe4;
 }

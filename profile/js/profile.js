@@ -24,6 +24,7 @@ function getUserData() {
 
 // print de todos los datos por los inputs
 function printDatos(datos) {
+    console.log(datos);
     // email no editable
     $('#email').text(datos.email)
 
