@@ -7,6 +7,10 @@ window.addEventListener('load', () => {
     if (tokenusu) {
         getUserData()
     }
+
+    $('#btnUpdateData').on('click', function() {
+        updateDatos()
+    })
 })
 
 // datos de usuario
@@ -26,7 +30,6 @@ function getUserData() {
 
 // print de todos los datos por los inputs
 function printDatos(datos) {
-    console.log(datos);
     // email no editable
     $('#email').text(datos.email)
 
@@ -34,4 +37,28 @@ function printDatos(datos) {
     for (let clave in datos) {
         $('#' + clave).val(datos[clave])
     }
+}
+
+function updateDatos() {
+    $.ajax({
+        type: "POST",
+        url: 'http://localhost:8000/api/updateUserData',
+        dataType: "json",
+        headers: {
+            Authorization: 'Bearer ' + tokenusu
+        },
+        data: {
+            name: $('#name').val(),
+            surname: $('#surname').val(),
+            dni: $('#dni').val(),
+            telephone: $('#telephone').val(),
+            country: $('#country').val(),
+            city: $('#city').val(),
+            address: $('#address').val(),
+            cp: $('#cp').val(),
+        },
+        success: function (response) {
+            console.log(response.msg);
+        },
+    })
 }
