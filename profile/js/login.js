@@ -1,10 +1,14 @@
+import { fadeIn } from '../../js/main.js'
+
 let bntLogin = document.getElementById('login')
 
 let tokenusu = sessionStorage.getItem('tokenusu')
 
-console.log(tokenusu);
-
 bntLogin.addEventListener('click', (event) => {
+    // fadein
+    document.body.style.opacity = 0;
+    fadeIn(document.body, 100);
+
     // Evitar el envío del formulario
     event.preventDefault()
 

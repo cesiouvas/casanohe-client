@@ -17,7 +17,7 @@ let srcLog = [
 let src
 
 // fadein
-function fadeIn(element, duration) {
+export function fadeIn(element, duration) {
     var start = performance.now();
     requestAnimationFrame(function fadeInStep(timestamp) {
         var progress = (timestamp - start) / duration;
@@ -32,9 +32,6 @@ window.addEventListener('load', function () {
     // fadein
     document.body.style.opacity = 0;
     fadeIn(document.body, 100);
-
-    // añadir todos los links y estilos a las páginas
-    linksYEstilos()
 
     // pintar header
     printHEader()
@@ -271,9 +268,4 @@ function deleteCartLine(cartIds) {
             }
         })
     });
-}
-
-// añadir todos los links y estilos a todas las páginas
-function linksYEstilos() {
-    //document.getElementsByTagName('head')[0].innerHTML += ``
 }

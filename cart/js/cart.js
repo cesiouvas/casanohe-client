@@ -12,7 +12,9 @@ let userData
 
 window.addEventListener('load', function () {
     // obtener datos de usuario
-    getUserData()
+    if (tokenusu) {
+        getUserData()
+    }
 
     $('#confirmarPedido').on('click', function () {
         // no está definido dni o dirección
@@ -46,7 +48,7 @@ function getUserData() {
 export function carritoPerfil(carrito) {
     cad = ``
     totalPrice = 0
-    
+
     // si el carrito está vacío
     if (carrito.length == 0) {
         contentCarrito.innerHTML = `<h1>El carrito está vacío</h1>

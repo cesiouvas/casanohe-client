@@ -1,4 +1,12 @@
+import { fadeIn } from '../../js/main.js'
+
 let btnRegister = document.getElementById('btnRegister')
+
+window.addEventListener('load', () => {
+    // fadein
+    document.body.style.opacity = 0;
+    fadeIn(document.body, 100);
+})
 
 btnRegister.addEventListener('click', (event) => {
     event.preventDefault()

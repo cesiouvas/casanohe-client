@@ -4,7 +4,9 @@ let sidebarCarrito = document.getElementById('sidebarCarrito')
 let tokenusu = sessionStorage.getItem('tokenusu')
 
 window.addEventListener('load', () => {
-    getUserData()
+    if (tokenusu) {
+        getUserData()
+    }
 })
 
 // datos de usuario
