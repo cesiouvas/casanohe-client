@@ -116,6 +116,15 @@
                         No tiene dirección o DNI establecidos.
                     </p>
                 </div>
+                <div id="errorCarritoVacio" class="modal-body" hidden>
+                    <p class="error-msg rounded p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" class="pb-1">
+                            <path fill="#000000"
+                                d="M1 21L12 2l11 19zm11-3q.425 0 .713-.288T13 17t-.288-.712T12 16t-.712.288T11 17t.288.713T12 18m-1-3h2v-5h-2z" />
+                        </svg>
+                        No se puede hacer un pedido con el carrito vacío.
+                    </p>
+                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Todavía no</button>
                     <button id="confirmarPedido" type="button" class="btn btn-primary">¡Claro!</button>

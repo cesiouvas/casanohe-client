@@ -1,5 +1,7 @@
 import { llenarCarrito } from '../../js/main.js'
 
+let comproCarrito = []
+
 let contentCarrito = document.getElementById('contentCarrito')
 let totalPrices = document.getElementById('totalPrices')
 
@@ -17,15 +19,22 @@ window.addEventListener('load', function () {
     }
 
     $('#confirmarPedido').on('click', function () {
-        // no está definido dni o dirección
-        if (!userData.dni || !userData.address || !userData.city || !userData.country) {
-            $("#errorPedido").removeAttr("hidden");
+        if (comproCarrito.length === 0) { // carrito vacío
+            $("#errorCarritoVacio").removeAttr("hidden");
             setTimeout(() => {
-                $("#errorPedido").attr("hidden", true);
+                $("#errorCarritoVacio").attr("hidden", true);
             }, 5000);
         } else {
-            // completar pedido
-            procesarPedido()
+            // no está definido dni o dirección
+            if (!userData.dni || !userData.address || !userData.city || !userData.country) {
+                $("#errorPedido").removeAttr("hidden");
+                setTimeout(() => {
+                    $("#errorPedido").attr("hidden", true);
+                }, 5000);
+            } else {
+                // completar pedido
+                procesarPedido()
+            }
         }
     })
 })
@@ -46,6 +55,7 @@ function getUserData() {
 }
 
 export function carritoPerfil(carrito) {
+    comproCarrito = carrito
     cad = ``
     totalPrice = 0
 
