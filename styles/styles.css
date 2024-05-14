@@ -49,6 +49,10 @@ a {
     font-weight: bold;
 }
 
+#myOrders {
+    border: 2px solid black;
+}
+
 .activado {
     text-decoration: underline var(--green);
     text-decoration-thickness: 2px;
