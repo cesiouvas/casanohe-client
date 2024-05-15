@@ -68,10 +68,17 @@ function pintaPedidos(pedidos) {
             <td>${estado}</td>
             <td>${pedido.totalPrice}€</td>
             <td>
-                <button class="btn btn-primary">Ver en detalle</button>
+                <button id="verPedido${pedido.id}" class="btn btn-primary">Ver en detalle</button>
             </td>
         </tr>`
     });
 
     myOrders.innerHTML += cad
+
+    // asignar evento a cada botón para ver la vista detallada
+    pedidos.forEach(btn => {
+        $('#verPedido' + btn.id).on('click', function () {
+            window.location.replace('./order.html?order_id=' + btn.id)
+        })
+    });
 }
