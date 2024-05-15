@@ -23,6 +23,22 @@ window.addEventListener('load', () => {
 function cargarPedido() {
     $.ajax({
         type: "GET",
+        url: 'http://localhost:8000/api/getDetallePedido',
+        dataType: "json",
+        headers: {
+            Authorization: 'Bearer ' + tokenusu
+        },
+        data: {
+            order_id: order_id
+        },
+        success: function (response) {
+            cargarDetallePedido(response.data)
+            order_details = response.data
+        },
+    })
+
+    $.ajax({
+        type: "GET",
         url: 'http://localhost:8000/api/getLineasPedido',
         dataType: "json",
         headers: {
@@ -35,26 +51,10 @@ function cargarPedido() {
             cargarLineasPedido(response.data)
         },
     })
-
-    $.ajax({
-        type: "GET",
-        url: 'http://localhost:8000/api/getDetallePedido',
-        dataType: "json",
-        headers: {
-            Authorization: 'Bearer ' + tokenusu
-        },
-        data: {
-            order_id: order_id
-        },
-        success: function (response) {
-            cargarDetallePedido(response.data)
-        },
-    })
 }
 
 function cargarDetallePedido(detalle) {
     let cadDetalle = ``
-    console.log(detalle);
     // parsear fecha
     let fecha = new Date(detalle.created_at);
     let dia = fecha.getDate();
@@ -90,6 +90,43 @@ function cargarDetallePedido(detalle) {
     $('#infoFechaPedido').html(cadDetalle)
 }
 
-function cargarLineasPedido() {
+function cargarLineasPedido(lineas) {
+    console.log(order_details);
+    let cadLine = `<table id="tablaDetalle" class="table">
+        <tr>
+            <th>Producto</th>
+            <th>Total</th>
+        </tr>`
+    console.log(lineas);
+    lineas.forEach(line => {
+        cadLine += `<tr>
+            <td>
+                <img class="order-image" src="../img/${line.image}.png">
+                <a>${line.name} x ${line.quantity_line}</a>
+            </td>
+            <td>${line.quantity_line * line.price}.00 €</td>
+        </tr>`
+    });
 
+    cadLine += `
+        <tr>
+            <td>Subtotal:</td>
+            <td>${order_details.totalPrice} €</td>
+        </tr>
+        <tr>
+            <td>Envío:</td>
+            <td>Gratis</td>
+        </tr>
+        <tr>
+            <td>Método de pago:</td>
+            <td>Tarjeta de Visa débito</td>
+        </tr>
+        <tr>
+            <td>Total:</td>
+            <td>${order_details.totalPrice} €</td>
+        </tr>
+    </table>`
+    
+    // tabla con precios totales
+    $('#tablaDetalle').append(cadLine)
 }

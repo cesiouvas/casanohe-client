@@ -30,7 +30,7 @@ h4 {
     font-style: normal;
 }
 
-p {
+p, button {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -307,4 +307,9 @@ a {
 /** order info */
 .order-info {
     font-size: 1.8vh;
+}
+
+.order-image {
+    width: 100px;
+    height: 100px;
 }
