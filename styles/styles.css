@@ -49,7 +49,7 @@ a {
     font-weight: bold;
 }
 
-#myOrders {
+.table {
     border: 2px solid black;
 }
 
