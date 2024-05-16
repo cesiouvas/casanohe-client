@@ -26,24 +26,67 @@
 
     <!-- sidebar -->
     <div id="sidebarCarrito" class="sidebar z-3">
-        
+
     </div>
 
     <div class="container pt-4">
         <div class="row justify-content-center">
             <!--<div class="col-10 bg-dark">.col-12</div>-->
             <div id="img" class="col-4">
-                
+
             </div>
             <div id="content" class="col-6">
-                
+                <button type="button" class="btn btn-primary w-100 rounded-pill m-3" data-bs-toggle="modal"
+                    data-bs-target="#modalCustomProduct">
+                    Personalizar producto
+                </button>
             </div>
         </div>
     </div>
 
-    <!--jquery-->
-    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
-        crossorigin="anonymous"></script>
+    <!-- modal de confirmación de pedido -->
+    <div class="modal fade" id="modalCustomProduct" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title fs-5">Personalizar producto
+                    </h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="container">
+                    <p class="p-2"><b>Indica tus preferencias para que el administrador tenga una idea lo más parecida posible a tu resultado final.</b></p>
+                    <form action="" method="POST">
+                        <input type="hidden" id="product_id" name="product_id">
+                        <div class="d-flex justify-content-center">
+                            <div class="p-3 w-100">
+                                <label for="comments">Comentarios</label>
+                                <textarea class="form-control" name="comments" id="comments" cols="30" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <div class="p-3 w-100">
+                                <label for="quantity">Cantidad</label>
+                                <input class="form-control" type="number" name="quantityCustom" id="quantityCustom">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button id="confirmarCustom" type="button" class="btn btn-primary">Mandar solicitud</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.js"
+        integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <!-- JavaScript de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
     <script type="module" src="../js/main.js"></script>
     <script type="module" src="./js/product.js"></script>
 

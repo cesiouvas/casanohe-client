@@ -7,10 +7,11 @@ let product_id = paramURL.get('idProd')
 let tokenusu = sessionStorage.getItem('tokenusu')
 
 let img = document.getElementById('img')
-let content = document.getElementById('content')
 
 $(window).on('load', function () {
     getProductDetails()
+
+    cargarModalCustom()
 })
 
 function getProductDetails() {
@@ -26,7 +27,7 @@ function getProductDetails() {
 
             img.innerHTML = `<img class="w-100" src="../img/${data.image}.png" alt="imagen ${data.image}">`
 
-            content.innerHTML += `<p>${data.name}</p>
+            let cad = `<p>${data.name}</p>
                 <p>${data.desc}</p>
                 <p>${data.price} €</p>
                 <div class="quantity-selector">
@@ -34,14 +35,16 @@ function getProductDetails() {
                     <input type="number" id="quantity" value="0" min="0">
                     <button id="increase"><i class="fas fa-plus">+</i></button>
                 </div>
-                <button id="addProduct" class="btn btn-primary">Añadir a la cesta</button>`
+                <button id="addProduct" class="btn btn-primary w-100 rounded-pill m-3">Añadir a la cesta</button>`
+
+            $('#content').prepend(cad)
 
             createQuantityButton()
 
             if (!tokenusu) {
                 // cambio texto del botón y funcionalidad
                 $('#addProduct').text('Iniciar sesión')
-                $('#addProduct').on('click', function() {
+                $('#addProduct').on('click', function () {
                     window.location.replace('../profile/login.html')
                 })
             } else {
@@ -89,6 +92,37 @@ function addProduct() {
             success: function (response) {
                 // recargar carrito
                 llenarCarrito()
+            },
+        })
+    })
+}
+
+function cargarModalCustom() {
+    $('#product_id').val(product_id)
+
+
+    $('#confirmarCustom').on('click', function () {
+
+        let comments = $('#comments').val()
+        let quantityCustom = $('#quantityCustom').val()
+
+        $.ajax({
+            type: "POST",
+            url: 'http://localhost:8000/api/createCustomOrder',
+            dataType: "json",
+            headers: {
+                Authorization: 'Bearer ' + tokenusu
+            },
+            data: {
+                product_id: product_id,
+                quantity: quantityCustom,
+                comments: comments
+            },
+            success: function (response) {
+                // cerrar modal
+                $(function () {
+                    $('#modalCustomProduct').modal('toggle');
+                });
             },
         })
     })

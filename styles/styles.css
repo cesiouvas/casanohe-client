@@ -162,7 +162,6 @@ a {
     color: black;
 }
 
-
 .btnCarrito {
     background-color: transparent;
     border: transparent;
@@ -312,4 +311,8 @@ a {
 .order-image {
     width: 100px;
     height: 100px;
+}
+
+.form-control {
+    border: 2px solid var(--yellow);
 }
