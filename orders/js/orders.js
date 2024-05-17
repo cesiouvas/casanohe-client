@@ -1,3 +1,6 @@
+// ruta conexión api
+import { route } from '../../js/main.js'
+
 let sidebarCarrito = document.getElementById('sidebarCarrito')
 
 // meses
@@ -20,7 +23,7 @@ window.addEventListener('load', () => {
 function getPedidos() {
     $.ajax({
         type: "GET",
-        url: 'http://localhost:8000/api/getPedidosUsuario',
+        url: route + 'getPedidosUsuario',
         dataType: "json",
         headers: {
             Authorization: 'Bearer ' + tokenusu
@@ -35,7 +38,7 @@ function getPedidos() {
 function getCustomPedidos() {
     $.ajax({
         type: "GET",
-        url: 'http://localhost:8000/api/getCustomPedidosUsuario',
+        url: route + 'getCustomPedidosUsuario',
         dataType: "json",
         headers: {
             Authorization: 'Bearer ' + tokenusu

@@ -1,3 +1,6 @@
+// ruta conexión api
+import { route } from '../../js/main.js'
+
 let btnLogout = document.getElementById('btnLogout')
 
 // token de sesión
@@ -7,7 +10,7 @@ let tokenusu = sessionStorage.getItem('tokenusu')
 btnLogout.addEventListener("click", () => {
     $.ajax({
         type: "GET",
-        url: 'http://localhost:8000/api/logout',
+        url: route + 'logout',
         dataType: "json",
         headers: {
             Authorization: "Bearer " + tokenusu,

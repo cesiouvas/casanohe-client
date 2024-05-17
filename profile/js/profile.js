@@ -1,3 +1,6 @@
+// ruta conexión api
+import { route } from '../../js/main.js'
+
 let sidebarCarrito = document.getElementById('sidebarCarrito')
 
 // token de sesión
@@ -17,7 +20,7 @@ window.addEventListener('load', () => {
 function getUserData() {
     $.ajax({
         type: "GET",
-        url: 'http://localhost:8000/api/getUserData',
+        url: route + 'getUserData',
         dataType: "json",
         headers: {
             Authorization: 'Bearer ' + tokenusu
@@ -42,7 +45,7 @@ function printDatos(datos) {
 function updateDatos() {
     $.ajax({
         type: "POST",
-        url: 'http://localhost:8000/api/updateUserData',
+        url: route + 'updateUserData',
         dataType: "json",
         headers: {
             Authorization: 'Bearer ' + tokenusu

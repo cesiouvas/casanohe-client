@@ -1,3 +1,6 @@
+// ruta conexión api
+import { route } from '../../js/main.js'
+
 let paramURL = new URLSearchParams(window.location.search)
 let order_id = paramURL.get('order_id')
 
@@ -23,7 +26,7 @@ window.addEventListener('load', () => {
 function cargarPedido() {
     $.ajax({
         type: "GET",
-        url: 'http://localhost:8000/api/getDetallePedido',
+        url: route + 'getDetallePedido',
         dataType: "json",
         headers: {
             Authorization: 'Bearer ' + tokenusu
@@ -39,7 +42,7 @@ function cargarPedido() {
 
     $.ajax({
         type: "GET",
-        url: 'http://localhost:8000/api/getLineasPedido',
+        url: route + 'getLineasPedido',
         dataType: "json",
         headers: {
             Authorization: 'Bearer ' + tokenusu

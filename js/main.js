@@ -1,4 +1,6 @@
 import { carritoPerfil } from '../cart/js/cart.js'
+// ruta conexión api
+export let route = 'http://localhost:8000/api/'
 
 let header = document.getElementsByTagName('header')
 let createHeader = document.getElementById('header')
@@ -110,7 +112,7 @@ export function llenarCarrito() {
 
     $.ajax({
         type: "GET",
-        url: 'http://localhost:8000/api/getProductsCarrito',
+        url: route + 'getProductsCarrito',
         dataType: "json",
         headers: {
             Authorization: 'Bearer ' + tokenusu
@@ -226,7 +228,7 @@ function actualizarCarrito(cartIds) {
 
     $.ajax({
         type: "PUT",
-        url: 'http://localhost:8000/api/actualizarCarrito',
+        url: route + 'actualizarCarrito',
         dataType: "json",
         headers: {
             Authorization: 'Bearer ' + tokenusu
@@ -252,7 +254,7 @@ function deleteCartLine(cartIds) {
                 // ajax para eliminar la línea
                 $.ajax({
                     type: "DELETE",
-                    url: 'http://localhost:8000/api/deleteCartLine',
+                    url: route + 'deleteCartLine',
                     dataType: "json",
                     headers: {
                         Authorization: 'Bearer ' + tokenusu

@@ -1,4 +1,6 @@
 import { llenarCarrito } from '../../js/main.js'
+// ruta conexión api
+import { route } from '../../js/main.js'
 
 let paramURL = new URLSearchParams(window.location.search)
 let product_id = paramURL.get('idProd')
@@ -17,7 +19,7 @@ $(window).on('load', function () {
 function getProductDetails() {
     $.ajax({
         type: "GET",
-        url: 'http://localhost:8000/api/getProductDetails',
+        url: route + 'getProductDetails',
         dataType: "json",
         data: {
             product_id: product_id,
@@ -80,7 +82,7 @@ function addProduct() {
 
         $.ajax({
             type: "POST",
-            url: 'http://localhost:8000/api/addProductToCart',
+            url: route + 'addProductToCart',
             dataType: "json",
             headers: {
                 Authorization: 'Bearer ' + tokenusu
@@ -108,7 +110,7 @@ function cargarModalCustom() {
 
         $.ajax({
             type: "POST",
-            url: 'http://localhost:8000/api/createCustomOrder',
+            url: route + 'createCustomOrder',
             dataType: "json",
             headers: {
                 Authorization: 'Bearer ' + tokenusu

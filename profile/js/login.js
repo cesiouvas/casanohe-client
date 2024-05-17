@@ -1,4 +1,6 @@
 import { fadeIn } from '../../js/main.js'
+// ruta conexión api
+import { route } from '../../js/main.js'
 
 let bntLogin = document.getElementById('login')
 
@@ -18,7 +20,7 @@ bntLogin.addEventListener('click', (event) => {
 
     $.ajax({
         type: 'POST',
-        url: 'http://127.0.0.1:8000/api/login',
+        url: route + 'login',
         dataType: 'json',
         data: {
             email: email,

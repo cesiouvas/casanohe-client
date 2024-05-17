@@ -1,4 +1,6 @@
 import { llenarCarrito } from '../../js/main.js'
+// ruta conexión api
+import { route } from '../../js/main.js'
 
 let comproCarrito = []
 
@@ -43,7 +45,7 @@ window.addEventListener('load', function () {
 function getUserData() {
     $.ajax({
         type: "GET",
-        url: 'http://localhost:8000/api/getUserData',
+        url: route + 'getUserData',
         dataType: "json",
         headers: {
             Authorization: 'Bearer ' + tokenusu
@@ -131,7 +133,7 @@ function createQuantityButtons(data) {
 function procesarPedido() {
     $.ajax({
         type: "POST",
-        url: 'http://localhost:8000/api/crearPedido',
+        url: route + 'crearPedido',
         dataType: "json",
         headers: {
             Authorization: 'Bearer ' + tokenusu

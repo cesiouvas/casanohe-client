@@ -1,3 +1,6 @@
+// ruta conexión api
+import { route } from '../../js/main.js'
+
 let shortViewDibujos = document.getElementById('shortViewDibujos')
 let shortViewCroche = document.getElementById('shortViewCroche')
 let shortViewAll = document.getElementById('shortViewAll')
@@ -103,7 +106,7 @@ function getAll() {
 
     $.ajax({
         type: "GET",
-        url: 'http://localhost:8000/api/getAllProducts',
+        url: route + 'getAllProducts',
         dataType: "json",
         data: {
             some: 1,
