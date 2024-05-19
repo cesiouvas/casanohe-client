@@ -348,3 +348,9 @@ a {
 .form-control {
     border: 2px solid var(--yellow);
 }
+
+@media (max-width: 800px) {
+    body, html {
+        margin: auto 2% auto 2%;
+    }
+}
