@@ -1,6 +1,6 @@
 import { carritoPerfil } from '../cart/js/cart.js'
 // ruta conexión api
-export let route = 'http://localhost:8000/api/'
+export let route = 'http://52.202.37.215/api/'
 
 let header = document.getElementsByTagName('header')
 let createHeader = document.getElementById('header')

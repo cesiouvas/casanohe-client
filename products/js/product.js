@@ -29,17 +29,16 @@ function getProductDetails() {
 
             img.innerHTML = `<img class="w-100" src="../img/${data.image}.png" alt="imagen ${data.image}">`
 
-            let cad = `<p>${data.name}</p>
-                <p>${data.desc}</p>
-                <p>${data.price} €</p>
-                <div class="quantity-selector">
+            let cad = `<h4>${data.name}</h4>
+                <p class="pb-4">${data.desc}</p>
+                <h5 class="text-end">${data.price} €</h5>
+                <div class="quantity-selector text-center">
                     <button id="decrease"><i class="fas fa-minus">-</i></button>
                     <input type="number" id="quantity" value="0" min="0">
                     <button id="increase"><i class="fas fa-plus">+</i></button>
-                </div>
-                <button id="addProduct" class="btn btn-primary w-100 rounded-pill m-3">Añadir a la cesta</button>`
-
-            $('#content').prepend(cad)
+                </div>`
+    
+            $('#content').append(cad)
 
             createQuantityButton()
 
