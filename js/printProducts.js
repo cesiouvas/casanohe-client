@@ -8,11 +8,11 @@ let shortViewAll = document.getElementById('shortViewAll')
 let ids = []
 
 window.addEventListener('load', () => {
-    getDibujos()
-    getCroche()
+    //getDibujos()
+    //getCroche()
     getAll()
 })
-
+/*
 //? productos dibujos
 function getDibujos() {
     let contRows = 0;
@@ -98,7 +98,7 @@ function getCroche() {
         },
     });
 }
-
+*/
 // todos
 function getAll() {
     let contRows = 0

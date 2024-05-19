@@ -49,6 +49,33 @@ a {
     font-weight: bold;
 }
 
+.welcome-board {
+    background-color: rebeccapurple;
+    height: 60%;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    border-radius: 20px;
+}
+
+.welcome-board-img {
+    max-width: 100%;
+}
+
+.welcome-board-msg {
+    width: 30%;
+    position: absolute;
+    top: 48%;
+    left: 20%;
+    transform: translateY(-50%);
+    margin-top: 0;
+    background-color: var(--yellow);
+    padding: 15px 15px 5px 15px;
+    border-radius: 20px;
+}
+
 .table {
     border: 2px solid black;
 }
