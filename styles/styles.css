@@ -224,6 +224,11 @@ a {
     border-radius: 20px;
 }
 
+.success-msg {
+    background-color: var(--green);
+    border-radius: 20px;
+}
+
 .txt-info {
     color: var(--green);
     font-weight: bold;

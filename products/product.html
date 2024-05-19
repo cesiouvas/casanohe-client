@@ -39,11 +39,41 @@
 
             </div>
         </div>
-        <div id="addCustomButtons" class="pt-4 w-100 text-center">
+        <div class="pt-4 d-flex justify-content-center align-items-center">
+            <div id="errorCantidad" class="w-25" hidden>
+                <p class="error-msg rounded p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" class="pb-1">
+                        <path fill="#000000"
+                            d="M1 21L12 2l11 19zm11-3q.425 0 .713-.288T13 17t-.288-.712T12 16t-.712.288T11 17t.288.713T12 18m-1-3h2v-5h-2z" />
+                    </svg>
+                    Selecciona cantidad
+                </p>
+            </div>
+
+            <div id="errorCantidadMax" style="width: 30%" hidden>
+                <p class="error-msg rounded p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" class="pb-1">
+                        <path fill="#000000"
+                            d="M1 21L12 2l11 19zm11-3q.425 0 .713-.288T13 17t-.288-.712T12 16t-.712.288T11 17t.288.713T12 18m-1-3h2v-5h-2z" />
+                    </svg>
+                    Cantidad no permitida
+                </p>
+            </div>
+
+            <div id="productoAnyadido" class="w-25" hidden>
+                <p class="success-msg rounded p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
+                        <path fill="#000000" d="m9.55 18l-5.7-5.7l1.425-1.425L9.55 15.15l9.175-9.175L20.15 7.4z" />
+                    </svg>
+                    Producto añadido
+                </p>
+            </div>
+        </div>
+        <div id="addCustomButtons" class="w-100 text-center">
             <button id="addProduct" class="btn btn-primary w-50 rounded-pill">Añadir a la cesta</button>
             <br><br>
-            <button type="button" class="btn btn-primary w-50 rounded-pill" data-bs-toggle="modal"
-                data-bs-target="#modalCustomProduct">
+            <button id="createCustom" type="button" class="btn btn-primary w-50 rounded-pill" data-bs-toggle="modal"
+                data-bs-target="#modalCustomProduct" hidden>
                 Personalizar producto
             </button>
         </div>
