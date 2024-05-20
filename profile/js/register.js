@@ -32,10 +32,7 @@ btnRegister.addEventListener('click', (event) => {
             passwd_confirmation: passwd_confirm // send passwd confirmation
         },
         success: function (response) {
-            if ($.trim(response) === '') {
-
-            } else {
-
+            if ($.trim(response) !== '') {
                 window.location.replace('./login.html'); // ! pasar variable de mensaje para que inicie sesión
             }
         },

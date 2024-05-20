@@ -155,6 +155,12 @@ a {
     background-color: var(--bg-white);
 }
 
+@media (min-width: 800px) {
+    .login {
+        width: 60%;
+    }
+}
+
 /*? buttons */
 
 .btn-primary {
@@ -352,5 +358,9 @@ a {
 @media (max-width: 800px) {
     body, html {
         margin: auto 2% auto 2%;
+    }
+
+    .login {
+        width: 100%;
     }
 }
