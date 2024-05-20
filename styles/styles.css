@@ -95,7 +95,7 @@ a {
 /* * Menu Styles */
 
 .nav-menu {
-    width: 100px;
+    width: 100%;
 }
 
 .logo-container {
@@ -355,6 +355,10 @@ a {
     border: 2px solid var(--yellow);
 }
 
+.width-menu {
+    width: 100%;
+}
+
 @media (max-width: 800px) {
     body, html {
         margin: auto 2% auto 2%;
@@ -362,5 +366,39 @@ a {
 
     .login {
         width: 100%;
+    }
+}
+
+@media (max-width: 550px) {
+    .width-menu {
+        width: 70%;
+    }
+}
+
+@media (max-width: 450px) {
+    .width-menu {
+        width: 70%;
+        margin-left: 15%;
+    }
+}
+
+@media (max-width: 410px) {
+    .width-menu {
+        width: 70%;
+        margin-left: 13.5%;
+    }
+}
+
+@media (max-width: 380px) {
+    .width-menu {
+        width: 70%;
+        margin-left: 10.5%;
+    }
+}
+
+@media (max-width: 350px) {
+    .width-menu {
+        width: 70%;
+        margin-left: 10%;
     }
 }
