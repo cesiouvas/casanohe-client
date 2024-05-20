@@ -33,12 +33,10 @@ btnRegister.addEventListener('click', (event) => {
         },
         success: function (response) {
             if ($.trim(response) !== '') {
-                window.location.replace('./login.html'); // ! pasar variable de mensaje para que inicie sesión
+                window.location.replace('./login.html');
             }
         },
         error: function (xhr, status, error) {
-            // pintar error de datos incorrectos
-
             console.error('Error en la solicitud AJAX:', status, error);
         }
     });

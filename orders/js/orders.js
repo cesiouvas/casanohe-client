@@ -139,10 +139,16 @@ function pintaPedidosPersonalizados(custom) {
         }
 
         cad += `<td>
-                <button id="verPedido${pedido.id}" class="btn btn-primary">Ver en detalle</button>
+                <button id="verCustom${pedido.id}" class="btn btn-primary">Ver en detalle</button>
             </td>
         </tr>`
+    })
 
-        $('#myCustomOrders').append(cad)
+    $('#myCustomOrders').append(cad)
+
+    custom.forEach(btn => {
+        $('#verCustom' + btn.id).on('click', function () {
+            window.location.replace('./custom.html?custom_id=' + btn.id)
+        })
     })
 }

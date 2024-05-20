@@ -15,7 +15,6 @@ let nombresMeses = [
     "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
 ];
 
-
 // token de sesión
 let tokenusu = sessionStorage.getItem('tokenusu')
 
@@ -56,6 +55,7 @@ function cargarPedido() {
     })
 }
 
+// detalle del pedido
 function cargarDetallePedido(detalle) {
     let cadDetalle = ``
     // parsear fecha
@@ -93,6 +93,7 @@ function cargarDetallePedido(detalle) {
     $('#infoFechaPedido').html(cadDetalle)
 }
 
+// lineas del pedido
 function cargarLineasPedido(lineas) {
     console.log(order_details);
     let cadLine = `<table id="tablaDetalle" class="table">
