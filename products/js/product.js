@@ -18,6 +18,7 @@ $(window).on('load', function () {
 })
 
 function getProductDetails() {
+    let cadImg
     $.ajax({
         type: "GET",
         url: route + 'getProductDetails',
@@ -31,8 +32,11 @@ function getProductDetails() {
             let stock
 
             comprobarStock = data.quantity
-
-            img.innerHTML = `<img class="w-100" src="../img/${data.image}.png" alt="imagen ${data.image}">`
+            // declarar img
+            cadImg = `<img class="w-100" src="../img/${data.image}.png" alt="imagen ${data.image}">`
+            // append de la imagen a los containers del html
+            $('#img').html(cadImg)
+            $('#movil-img').html(cadImg)
 
             let cad = `<h4>${data.name}</h4>
                 <p>${data.desc}</p>`
@@ -56,11 +60,12 @@ function getProductDetails() {
                 <h5 class="text-end">${data.price} €</h5>
                 <div class="quantity-selector text-center">
                     <button id="decrease"><i class="fas fa-minus">-</i></button>
-                    <input type="number" id="quantity" value="0" min="0">
+                    <input type="number" id="quantity" value="0" min="0" disabled>
                     <button id="increase"><i class="fas fa-plus">+</i></button>
                 </div>`
 
             $('#content').append(cad)
+            $('#movil-content').append(cad)
 
             // asignar funciones de añadir y restar cantidad
             createQuantityButton()
