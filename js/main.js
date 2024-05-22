@@ -191,10 +191,27 @@ export function llenarCarrito() {
 // mostrar y cerrar carrito
 function toggleSidebar() {
     var sidebar = document.getElementById("sidebarCarrito");
-    if (sidebar.style.width === "23%") {
-        sidebar.style.width = "0";
+    var screen1300 = window.matchMedia("(max-width: 1300px)").matches;
+    var screen700 = window.matchMedia("(max-width: 700px)").matches;
+
+    if (screen700) {
+        if (sidebar.style.width === "80%") {
+            sidebar.style.width = "0";
+        } else {
+            sidebar.style.width = "80%";
+        }
+    } else if (screen1300) {
+        if (sidebar.style.width === "40%") {
+            sidebar.style.width = "0";
+        } else {
+            sidebar.style.width = "40%";
+        }
     } else {
-        sidebar.style.width = "23%";
+        if (sidebar.style.width === "23%") {
+            sidebar.style.width = "0";
+        } else {
+            sidebar.style.width = "23%";
+        }
     }
 }
 

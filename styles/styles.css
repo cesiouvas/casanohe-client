@@ -49,6 +49,11 @@ a {
     font-weight: bold;
 }
 
+/*! no mostrar la vista del móvil */
+.movil {
+    display: none;
+}
+
 .welcome-board {
     background-color: rebeccapurple;
     height: 60%;
@@ -265,7 +270,8 @@ a {
 .txt-info {
     color: var(--green);
     font-weight: bold;
-} 
+}
+
 /* * Sidebar Styles */
 .sidebar {
     height: 100%;
@@ -375,8 +381,17 @@ a {
     .login {
         width: 100%;
     }
+
+    .movil {
+        display: block;
+    }
+
+    .pc {
+        display: none;
+    }
 }
 
+/*? media queries para el menu superior */
 @media (max-width: 550px) {
     .width-menu {
         width: 70%;
