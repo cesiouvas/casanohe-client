@@ -50,15 +50,25 @@
     <div class="p-4">
         <h2>Detalles del pedido</h2>
         <div>
-            <label for="comments">Mis comentarios</label>
-            <textarea class="form-control w-50" name="comments" id="comments" disabled></textarea>
+            <b><label for="comments">Mis comentarios:</label></b>
+            <textarea class="form-control w-100" name="comments" id="comments" disabled></textarea>
+            <div class="d-flex justify-content-between p-3">
+                <p id="quantity"><b>Cantidad:</b> </p>
+                <div>
+                    <button class="btn btn-warning" type="submit" id="editComment">Editar comentario</button>
+                    <button class="btn btn-warning d-none" type="submit" id="saveComment">Guardar comentario</button>
+                </div>
+            </div>
         </div>
         <br><br>
         <div>
-            <label for="admin_msg">Mensaje del administrador</label>
-            <textarea class="form-control w-50" name="admin_msg" id="admin_msg" disabled></textarea>
+            <b><label for="admin_msg" id="label_admin_msg">Mensaje del administrador:</label></b>
+            <textarea class="form-control w-100" name="admin_msg" id="admin_msg" disabled></textarea>
+            <p id="info_no_msg" style="display: none;">El administrador no ha concretado todavía los datos ni cómo se va a hacer tu producto, espera pacientemente pod favor</p>
         </div>
     </div>
+
+    <br><br><br><br><br><br>
 
     <footer class="footer bg-dark text-white py-3 fixed-bottom">
         <div class="text-center">

@@ -70,6 +70,53 @@ function cargarDetallePedido(order) {
     cad += ` <b>${estado}</b></p>`
 
     $('#infoFechaPedido').html(cad)
+    $('#quantity').append(order.quantity)
 
+    // mostrar comentarios usuario
     $('#comments').val(order.comments)
+
+    // mensaje de administrador
+    if (!order.admin_msg) {
+        // ocultar textarea
+        $('#admin_msg').hide()
+        $('#label_admin_msg').hide()
+        // mostrar mensaje
+        $('#info_no_msg').show()
+    } else {
+        $('#admin_msg').val(order.admin_msg)
+    }
 }
+
+// botón editar comentario
+$('#editComment').on('click', function() {
+    // cambio de botones
+    $('#saveComment').closest('.d-none').removeClass('d-none').show();
+    $('#editComment').addClass('d-none').show();
+    $('#comments').removeAttr('disabled');
+})
+
+// botón guardar comentario
+$('#saveComment').on('click', function() {
+    $.ajax({
+        type: "PUT",
+        url: route + 'editarPedidoCustom',
+        dataType: "json",
+        headers: {
+            Authorization: 'Bearer ' + tokenusu
+        },
+        data: {
+            custom_id: custom_id,
+            comments: $('#comments').val()
+        },
+        success: function (response) {
+            cargarDetallePedido(response.data)
+        },
+    })
+    
+    // cambio de botones
+    $('#editComment').closest('.d-none').removeClass('d-none').show();
+    $('#saveComment').addClass('d-none').show();
+    $('#comments').attr('disabled', 'disabled');
+})
+
+
