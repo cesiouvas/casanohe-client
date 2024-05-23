@@ -196,19 +196,19 @@ function toggleSidebar() {
     var screen1300 = window.matchMedia("(max-width: 1300px)").matches;
     var screen700 = window.matchMedia("(max-width: 700px)").matches;
 
-    if (screen700) {
+    if (screen700) { // pantalla de 700 px max
         if (sidebar.style.width === "80%") {
             sidebar.style.width = "0";
         } else {
             sidebar.style.width = "80%";
         }
-    } else if (screen1300) {
+    } else if (screen1300) { // pantalla de 1300 px max
         if (sidebar.style.width === "40%") {
             sidebar.style.width = "0";
         } else {
             sidebar.style.width = "40%";
         }
-    } else {
+    } else { // otras pantallas
         if (sidebar.style.width === "23%") {
             sidebar.style.width = "0";
         } else {
