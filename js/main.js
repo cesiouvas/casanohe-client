@@ -138,7 +138,7 @@ export function llenarCarrito() {
                 cartIds.push(product.scid)
 
                 // sumar al coste total el coste de cada línea parseando a float
-                totalPrice += parseFloat(product.line_price)
+                totalPrice += parseFloat(product.price * product.line_quantity)
                 cad += `<div class="row justify-content-center pb-4" style="height: 150px">
                     <div id="img" class="col-4" >
                         <img class="cartImage" src="${src}img/${product.image}.png" alt="${product.image}">
