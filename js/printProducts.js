@@ -10,7 +10,8 @@ let ids = []
 window.addEventListener('load', () => {
     //getDibujos()
     //getCroche()
-    getAll()
+    getAll(1, 'allDibujos')
+    getAll(2, 'allCroche')
 })
 /*
 //? productos dibujos
@@ -100,16 +101,17 @@ function getCroche() {
 }
 */
 // todos
-function getAll() {
+function getAll(type, emptyContainer) {
     let contRows = 0
     let cadAll = ``
+    let container = $('#' + emptyContainer)
 
     $.ajax({
         type: "GET",
         url: route + 'getAllProducts',
         dataType: "json",
         data: {
-            some: 1,
+            type: type
         },
         success: function (response) {
             let data = response.data;
@@ -138,7 +140,7 @@ function getAll() {
                 // Incrementar el contador de elementos en la fila
                 contRows++
             })
-            shortViewAll.innerHTML = cadAll
+            container.html(cadAll)
 
             //* función crear eventos
             events()
