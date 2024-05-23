@@ -54,6 +54,10 @@ a {
     display: none;
 }
 
+.movil-carro {
+    display: none;
+}
+
 .welcome-board {
     background-color: rebeccapurple;
     height: 60%;
@@ -253,7 +257,7 @@ a {
 
 .info-message {
     border: 3px solid var(--yellow);
-    padding: 5px;
+    padding: 15px 15px 0 15px;
     border-radius: 20px;
 }
 
@@ -371,6 +375,16 @@ a {
 
 .faq-txt {
     font-size: smaller;
+}
+
+@media (max-width: 1250px) {
+    .movil-carro {
+        display: block;
+    }
+
+    .pc-carro {
+        display: none;
+    }
 }
 
 @media (max-width: 800px) {

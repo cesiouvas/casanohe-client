@@ -4,9 +4,6 @@ import { route } from '../../js/main.js'
 
 let comproCarrito = []
 
-let contentCarrito = document.getElementById('contentCarrito')
-let totalPrices = document.getElementById('totalPrices')
-
 let tokenusu = sessionStorage.getItem('tokenusu')
 
 let cad = ``
@@ -64,7 +61,7 @@ export function carritoPerfil(carrito) {
 
     // si el carrito está vacío
     if (carrito.length == 0) {
-        contentCarrito.innerHTML = `<h1>El carrito está vacío</h1>
+        cad = `<h1>El carrito está vacío</h1>
         <h3>Navega por nuestros productos!</h3>`
     } else {
         carrito.forEach(product => {
@@ -79,7 +76,7 @@ export function carritoPerfil(carrito) {
                     <img class="cartImage" src="../img/${product.image}.png" alt="${product.image}">
                 </div>
                 <div id="content" class="col-4 d-flex justify-content-center align-items-center text-center">
-                    <p>${product.name} | ${product.type}</p>
+                    <p>${product.name} | ${product.type} x ${product.line_quantity}</p>
                 </div>
                 <div id="content" class="col-1 d-flex justify-content-center align-items-center text-center">
                     <p>${product.price * product.line_quantity}€</p>
@@ -87,7 +84,7 @@ export function carritoPerfil(carrito) {
                 <div id="content" class="col-3 d-flex justify-content-center align-items-center text-center">
                     <div class="quantity-selector">
                         <button id="decreaseInProfile${product.scid}"><i class="fas fa-minus">-</i></button>
-                        <input type="number" id="quantityInProfile${product.scid}" value="${product.line_quantity}" min="0">
+                        <input type="number" id="quantityInProfile${product.scid}" value="${product.line_quantity}" min="0" readonly>
                         <button id="increaseInProfile${product.scid}"><i class="fas fa-plus">+</i></button>
                     </div>
                 </div>
@@ -98,7 +95,9 @@ export function carritoPerfil(carrito) {
                 </div>
             </div>`
         });
-        contentCarrito.innerHTML = cad
+
+        $('#contentCarrito').html(cad)
+        $('#contentCarrito-movil').html(cad)
     }
 
     cad = `<div class="d-flex justify-content-between">
@@ -110,7 +109,8 @@ export function carritoPerfil(carrito) {
             <p class="ml-auto">Gratis</p>
         </div>`
 
-    totalPrices.innerHTML = cad
+    $('#totalPrices').html(cad)
+    $('#totalPrices-movil').html(cad)
 
     // eliminar línea del carrito
     deleteCartLine(cartIds)
@@ -133,8 +133,10 @@ function createQuantityButtons(data, cartIds) {
         // restar cantidad
         $('#increaseInProfile' + button.scid).on('click', function () {
             let currentValue = parseInt($('#quantityInProfile' + button.scid).val())
-            $('#quantityInProfile' + button.scid).val(currentValue + 1)
-            actualizarCarrito(cartIds)
+            if (currentValue < button.quantity) { // la cantidad no podrá ser mayor que el stock
+                $('#quantityInProfile' + button.scid).val(currentValue + 1)
+                actualizarCarrito(cartIds)
+            }
         })
     })
 }
