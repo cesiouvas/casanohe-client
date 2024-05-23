@@ -42,7 +42,7 @@ function getProductDetails() {
                 <p>${data.desc}</p>`
             // cambiar colores según cantidades
             switch (true) {
-                case (data.quantity > 5):
+                case (data.quantity >= 5):
                     color = '#CED93C'
                     stock = data.quantity
                     break;
