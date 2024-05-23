@@ -385,6 +385,18 @@ a {
     .pc-carro {
         display: none;
     }
+
+    .welcome-board-msg {
+        width: 35%;
+        position: absolute;
+        top: 400px;
+        left: 15%;
+        transform: translateY(-50%);
+        margin-top: 0;
+        background-color: var(--yellow);
+        padding: 15px 15px 5px 15px;
+        border-radius: 20px;
+    }
 }
 
 @media (max-width: 800px) {
@@ -409,6 +421,18 @@ a {
 @media (max-width: 550px) {
     .width-menu {
         width: 70%;
+    }
+
+    .welcome-board-msg {
+        width: 45%;
+        position: absolute;
+        top: 400px;
+        left: 15%;
+        transform: translateY(-50%);
+        margin-top: 0;
+        background-color: var(--yellow);
+        padding: 15px 15px 5px 15px;
+        border-radius: 20px;
     }
 }
 
