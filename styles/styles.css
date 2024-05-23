@@ -57,7 +57,7 @@ a {
 .welcome-board {
     background-color: rebeccapurple;
     height: 60%;
-    width: 90%;
+    width: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -70,9 +70,9 @@ a {
 }
 
 .welcome-board-msg {
-    width: 30%;
+    width: 40%;
     position: absolute;
-    top: 48%;
+    top: 60%;
     left: 20%;
     transform: translateY(-50%);
     margin-top: 0;
